@@ -170,7 +170,11 @@ def available_monthly_data(circle_name, connection_value, region_value):
 # ----------------------------- Database validation -----------------------------
 if not DB_PATH.exists():
     st.error(f"Database not found: {DB_PATH}")
-    st.info("Keep your existing SQLite database at data/raw/airtel.db.")
+    st.info(
+        "The dashboard expects the SQLite database at data/raw/airtel.db. "
+        "This file is excluded from Git, so it is unavailable in cloud deployments. "
+        "Keep it at this path when running the dashboard locally."
+    )
     st.stop()
 
 DB_OBJECTS = objects()
